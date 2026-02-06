@@ -5,16 +5,16 @@
  *
  * @package           Herzog Dupont for YOOtheme Pro
  * @author            Thomas Weidlich
- * @copyright         Copyright (C) 2021-2023 Thomas Weidlich
+ * @copyright         Copyright (C) 2021-2026 Thomas Weidlich
  * @license           GNU General Public License version 3, see LICENSE.txt
  *
  * @wordpress-plugin
  * Plugin Name:       Herzog Dupont for YOOtheme Pro
  * Plugin URI:        https://herzog-dupont.de/yootheme-pro
  * Description:       A plugin for the YOOtheme Pro page builder which adds more elements to the element library.
- * Version:           1.7.0
+ * Version:           1.8.1
  * Requires at least: 5.4
- * Requires PHP:      8.0
+ * Requires PHP:      8.1
  * Author:            Thomas Weidlich
  * Author URI:        https://herzog-dupont.de
  * Text Domain:       herzog-dupont
@@ -27,7 +27,7 @@ if ( !defined( 'WPINC' ) )
 	die;
 
 // Current plugin version.
-define( 'HERZOGDUPONT_VERSION', '1.7.0' );
+define( 'HERZOGDUPONT_VERSION', '1.8.1' );
 
 // The code that runs during plugin activation.
 function activate_herzogdupont() {

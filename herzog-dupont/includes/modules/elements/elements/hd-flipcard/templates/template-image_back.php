@@ -1,6 +1,6 @@
 <?php
 
-/* Herzog Dupont for YOOtheme Pro Copyright (C) 2016-2023 YOOtheme GmbH, 2019-2023 Thomas Weidlich GNU GPL v3 */
+/* Herzog Dupont for YOOtheme Pro Copyright (C) 2016-2026 YOOtheme GmbH, 2019-2026 Thomas Weidlich GNU GPL v3 */
 
 // Image
 if ($props['image_back']) {
@@ -16,6 +16,7 @@ if ($props['image_back']) {
 
             'uk-text-{image_back_svg_color} {@image_back_svg_inline}' => $this->isImage($props['image_back']) == 'svg',
             'uk-margin[-{image_back_margin}]-top {@!image_back_margin: remove} {@!image_back_box_decoration} {@!image_back_transition}' => $props['image_back_align'] == 'between' || ($props['image_back_align'] == 'bottom' && !($props['panel_back_style'] && $props['panel_back_image_no_padding'])),
+            'uk-inverse-{image_back_text_color}',
         ],
 
         'src' => $props['image_back'],

@@ -1,10 +1,16 @@
 <?php
 
-/* Herzog Dupont for YOOtheme Pro Copyright (C) 2020-2023 Thomas Weidlich GNU GPL v3 */
+/* Herzog Dupont for YOOtheme Pro Copyright (C) 2020-2026 Thomas Weidlich GNU GPL v3 */
 
 $uniqid = uniqid('hd-');
 
-$el = $this->el('div');
+$el = $this->el('div', [
+
+    'class' => [
+        'uk-inverse-{text_color}',
+    ],
+
+]);
 
 // Image Before
 $image_before = $this->el('image', [
@@ -40,6 +46,20 @@ $image_after = $this->el('image', [
     'height' => $props['image_height'],
     'focal_point' => $props['image_after_focal_point'],
     'thumbnail' => true,
+]);
+
+// Range
+$range = $this->el('input', [
+
+    'class' => [
+        'hd-image-comparison-range',
+    ],
+
+    'type' => 'range',
+    'min' => 0,
+    'max' => 100,
+    'aria-label' => $props['slider_aria_label'],
+
 ]);
 
 // Slider
@@ -122,6 +142,7 @@ $decoration = $this->el('div', [
         <?php if ($props['image_box_decoration']) : ?>
         <?php echo $decoration->end() ?>
         <?php endif ?>
+        <?php echo $range($props) ?>
         <?php echo $slider($props) ?></div>
     </div>
     <?php elseif ($props['image_before']) : ?>

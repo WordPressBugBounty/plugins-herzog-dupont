@@ -1,6 +1,6 @@
 <?php
 
-/* Herzog Dupont for YOOtheme Pro Copyright (C) 2016-2023 YOOtheme GmbH, 2019-2023 Thomas Weidlich GNU GPL v3 */
+/* Herzog Dupont for YOOtheme Pro Copyright (C) 2016-2026 YOOtheme GmbH, 2019-2026 Thomas Weidlich GNU GPL v3 */
 
 // Title
 $title_back = $this->el($props['title_back_element'], [
@@ -72,7 +72,7 @@ $grid_back = $this->el('div', [
 $cell_title_back = $this->el('div', [
 
     'class' => [
-        'uk-width-{title_back_grid_width}[@{title_back_grid_breakpoint}]',
+        'uk-width-{!title_back_grid_width: expand}[@{title_back_grid_breakpoint}]',
         'uk-margin-remove-first-child',
     ],
 
@@ -81,6 +81,7 @@ $cell_title_back = $this->el('div', [
 $cell_content_back = $this->el('div', [
 
     'class' => [
+        'uk-width-auto[@{title_back_grid_breakpoint}] {@title_back_grid_width: expand}',
         'uk-margin-remove-first-child',
     ],
 

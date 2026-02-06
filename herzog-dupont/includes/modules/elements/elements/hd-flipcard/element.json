@@ -240,6 +240,12 @@
             "show": "panel_style",
             "enable": "image && image_align != 'between'"
         },
+        "height_expand": {
+            "label": "Height",
+            "description": "Expand the height of the element to fill the available space in the column.",
+            "type": "checkbox",
+            "text": "Fill the available column space"
+        },
         "html_element": "${builder.html_element}",
         "title_style": {
             "label": "Style",
@@ -338,6 +344,7 @@
             "type": "select",
             "options": {
                 "Auto": "auto",
+                "Expand": "expand",
                 "80%": "4-5",
                 "75%": "3-4",
                 "66%": "2-3",
@@ -768,6 +775,18 @@
             },
             "enable": "image && image_svg_inline"
         },
+        "image_text_color": {
+            "label": "Text Color",
+            "description": "Set light or dark color mode for text, buttons and controls if a sticky transparent navbar is displayed above.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Light": "light",
+                "Dark": "dark"
+            },
+            "source": true,
+            "enable": "image"
+        },
         "link_style": {
             "label": "Style",
             "description": "Set the link style.",
@@ -971,6 +990,7 @@
             "type": "select",
             "options": {
                 "Auto": "auto",
+                "Expand": "expand",
                 "80%": "4-5",
                 "75%": "3-4",
                 "66%": "2-3",
@@ -1224,6 +1244,13 @@
             "source": true,
             "enable": "image_back"
         },
+        "image_back_loading": {
+            "label": "Loading",
+            "description": "By default, images are loaded lazy. Enable eager loading for images in the initial viewport.",   
+            "type": "checkbox",
+            "text": "Load image eagerly",
+            "enable": "image_back"
+        },
         "image_back_border": {
             "label": "Border",
             "description": "Select the image border style.",
@@ -1425,11 +1452,16 @@
             },
             "enable": "image_back && image_back_svg_inline"
         },
-        "image_back_loading": {
-            "label": "Loading",
-            "description": "By default, images are loaded lazy. Enable eager loading for images in the initial viewport.",   
-            "type": "checkbox",
-            "text": "Load image eagerly",
+        "image_back_text_color": {
+            "label": "Text Color",
+            "description": "Set light or dark color mode for text, buttons and controls if a sticky transparent navbar is displayed above.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Light": "light",
+                "Dark": "dark"
+            },
+            "source": true,
             "enable": "image_back"
         },
         "link_back_style": {
@@ -1583,6 +1615,7 @@
                                 "panel_style",
                                 "panel_padding",
                                 "panel_image_no_padding",
+                                "height_expand",
                                 "html_element"
                             ]
                         },
@@ -1652,7 +1685,8 @@
                                 "image_margin",
                                 "image_svg_inline",
                                 "image_svg_animate",
-                                "image_svg_color"
+                                "image_svg_color",
+                                "image_text_color"
                             ]
                         },
                         {
@@ -1724,6 +1758,7 @@
                             "divider": true,
                             "fields": [
                                 "image_back_focal_point",
+                                "image_back_loading",
                                 "image_back_border",
                                 "image_back_box_shadow",
                                 "image_back_box_decoration",
@@ -1743,7 +1778,7 @@
                                 "image_back_svg_inline",
                                 "image_back_svg_animate",
                                 "image_back_svg_color",
-                                "image_back_loading"
+                                "image_back_text_color"
                             ]
                         },
                         {

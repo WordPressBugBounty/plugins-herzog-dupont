@@ -2,9 +2,9 @@
 Contributors: forrestkirby
 Tags: YOOtheme, YOOtheme Pro, Page Builder
 Requires at least: 5.4
-Tested up to: 6.4
-Requires PHP: 8.0
-Stable tag: 1.7.0
+Tested up to: 6.9
+Requires PHP: 8.1
+Stable tag: 1.8.1
 License: GNU General Public License version 3
 License URI: https://gnu.org/licenses/gpl-3.0
 
@@ -41,6 +41,26 @@ This plugin adds more elements to the element library of the YOOtheme Pro page b
 10. Lottie Element
 
 == Changelog ==
+
+= 1.8.1 =
+
+- fixed check for empty fields in flipcard element
+
+= 1.8.0 =
+
+- added justify grid parallax option to slideshow grid element
+- added aria label for range slider in image comparison element
+- added expand to title grid width option to flipcard, slidehow grid and timeline elements
+- added expand content option to slideshow grid element
+- added height expand option to flipcard element
+- added text color option for transparent header to flipcard, image comparison and timeline elements
+- replace UIkit `isVisible` function by `IntersectionObserver` in counter and lottie element
+- YOOtheme Pro 5.0.0 compatibility
+- raised minimum YOOtheme Pro version to 5.0.0
+- raised minimum Joomla version to 5.0.0
+- raised minimum PHP version to 8.1.0
+- fixed automatically recompile style
+- fixed item margin top not applied in timeline element
 
 = 1.7.0 =
 

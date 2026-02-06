@@ -1,12 +1,13 @@
 <?php
 
-/* Herzog Dupont for YOOtheme Pro Copyright (C) 2016-2023 YOOtheme GmbH, 2019-2023 Thomas Weidlich GNU GPL v3 */
+/* Herzog Dupont for YOOtheme Pro Copyright (C) 2016-2026 YOOtheme GmbH, 2019-2026 Thomas Weidlich GNU GPL v3 */
 
 // Resets
 if ($props['icon'] && !$props['image']) { $element['panel_image_no_padding'] = ''; }
 
 // Override default settings
 $element['panel_style'] = $props['panel_style'] ?: $element['panel_style'];
+$element['image_text_color'] = $props['image_text_color'] ?: $element['image_text_color'];
 
 // Image
 $props['image'] = $this->render("{$__dir}/template-image", compact('props'));
@@ -60,6 +61,7 @@ $el = $this->el($props['item_element'] ?: 'div', [
 
     'class' => [
         'el-item',
+        'uk-margin[-{item_margin}]-top',
         'uk-margin-auto uk-width-{item_maxwidth}',
 
         // Match link container height

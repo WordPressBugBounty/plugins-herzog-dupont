@@ -1,6 +1,6 @@
 <?php
 
-/* Herzog Dupont Copyright (C) 2021-2023 Thomas Weidlich GNU GPL v3 */
+/* Herzog Dupont Copyright (C) 2021-2026 Thomas Weidlich GNU GPL v3 */
 
 // If this file is not called by WordPress, die.
 if ( !defined( 'WPINC' ) )
@@ -11,7 +11,7 @@ class Herzogdupont_Activator {
     // Check whether YOOtheme Pro is installed.
     public static function activate() {
 
-        $minimumYOOthemeVersion = '4.0.0';
+        $minimumYOOthemeVersion = '5.0.0-beta.1';
         $themeData = wp_get_theme('yootheme');
     
         if( !$themeData || !version_compare( $themeData->Version, $minimumYOOthemeVersion, '>=' ) ) {

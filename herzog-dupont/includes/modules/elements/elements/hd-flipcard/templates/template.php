@@ -1,6 +1,6 @@
 <?php
 
-/* Herzog Dupont for YOOtheme Pro Copyright (C) 2016-2023 YOOtheme GmbH, 2019-2023 Thomas Weidlich GNU GPL v3 */
+/* Herzog Dupont for YOOtheme Pro Copyright (C) 2016-2026 YOOtheme GmbH, 2019-2026 Thomas Weidlich GNU GPL v3 */
 
 // Front
 // Resets
@@ -250,6 +250,9 @@ $el = $this->el($props['html_element'] ?: 'div', [
         'hd-flipcard',
         'hd-flipcard-{flip_animation}',
         'hd-flipcard-3d {@3d_effect}',
+
+        // Expand to column height
+        'uk-flex-1 {@height_expand}',
     ],
 
     'data-flipmode' => [

@@ -1,14 +1,18 @@
 <?php
 
-/* Herzog Dupont for YOOtheme Pro Copyright (C) 2021-2023 Thomas Weidlich GNU GPL v3 */
+/* Herzog Dupont for YOOtheme Pro Copyright (C) 2021-2026 Thomas Weidlich GNU GPL v3 */
 
 namespace HerzogDupont;
+
+
 
 use YOOtheme\Builder;
 use YOOtheme\Config;
 use YOOtheme\Path;
+use YOOtheme\Theme\Styler\StylerConfig;
 
 include_once __DIR__ . '/src/SettingsListener.php';
+include_once __DIR__ . '/src/StyleListener.php';
 
 return [
 
@@ -25,7 +29,10 @@ return [
         // Add settings Panels
         'customizer.init' => [
             SettingsListener::class => 'initCustomizer',
-        ]
+        ],
+
+        // Recompile LESS style on installation
+        StylerConfig::class => [StyleListener::class => 'config'],
 
     ],
 

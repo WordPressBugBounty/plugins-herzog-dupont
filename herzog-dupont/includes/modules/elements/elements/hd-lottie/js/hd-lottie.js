@@ -1,4 +1,4 @@
-/* Herzog Dupont for YOOtheme Pro Copyright (C) 2019-2023 Thomas Weidlich GNU GPL v3 */
+/* Herzog Dupont for YOOtheme Pro Copyright (C) 2019-2026 Thomas Weidlich GNU GPL v3 */
 
 class hdLottie {
 
@@ -60,17 +60,19 @@ class hdLottie {
 					anim.playSegments(anim.initialSegment, true);
 					break;
 				case 'inview':
-					if (UIkit.util.isVisible(this.player)) {
-						anim.playSegments(anim.initialSegment, true);
-					} else {
-						window.addEventListener('scroll', () => {
-							if (UIkit.util.isVisible(this.player) && !this.isComplete) {
+					// Register IntersectionObserver
+					const io = new IntersectionObserver((entries) => {
+						entries.forEach((entry) => {
+							let el = entry.target;
+							if (entry.intersectionRatio > 0 && !this.isComplete) {
 								anim.playSegments(anim.initialSegment, true);
 								this.isComplete = true;
 							}
 						});
-					}
+					});
 
+					// Declares what to observe, and observes its properties.
+					io.observe(this.player);
 					break;
 				case 'click':
 					this.player.addEventListener('click', () => {
@@ -134,7 +136,6 @@ class hdLottie {
 
 		this.isComplete = false;
 	}
-
 
 }
 

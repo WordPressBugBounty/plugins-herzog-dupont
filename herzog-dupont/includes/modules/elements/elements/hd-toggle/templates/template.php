@@ -1,6 +1,6 @@
 <?php
 
-/* Herzog Dupont for YOOtheme Pro Copyright (C) 2018-2023 Thomas Weidlich GNU GPL v3 */
+/* Herzog Dupont for YOOtheme Pro Copyright (C) 2018-2026 Thomas Weidlich GNU GPL v3 */
 
 $el = $this->el('div', [
 
@@ -30,6 +30,8 @@ if ($props['toggle_animation_use_advanced']) {
 $props['queued'] = $props['queued'] ? true : false;
 
 $button = $this->el('a', [
+
+    'href',
 
     'class' => $this->expr([
         'uk-width-1-1 {@btn_fullwidth}',

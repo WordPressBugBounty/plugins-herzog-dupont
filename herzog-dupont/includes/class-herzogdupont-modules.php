@@ -1,6 +1,6 @@
 <?php
 
-/* Herzog Dupont Copyright (C) 2021-2023 Thomas Weidlich GNU GPL v3 */
+/* Herzog Dupont Copyright (C) 2021-2026 Thomas Weidlich GNU GPL v3 */
 
 // If this file is not called by WordPress, die.
 if ( !defined( 'WPINC' ) )
