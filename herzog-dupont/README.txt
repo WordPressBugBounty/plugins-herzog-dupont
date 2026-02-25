@@ -4,7 +4,7 @@ Tags: YOOtheme, YOOtheme Pro, Page Builder
 Requires at least: 5.4
 Tested up to: 6.9
 Requires PHP: 8.1
-Stable tag: 1.8.1
+Stable tag: 1.8.2
 License: GNU General Public License version 3
 License URI: https://gnu.org/licenses/gpl-3.0
 
@@ -42,9 +42,13 @@ This plugin adds more elements to the element library of the YOOtheme Pro page b
 
 == Changelog ==
 
+= 1.8.2 =
+
+- fixed render conditions across all elements
+
 = 1.8.1 =
 
-- fixed check for empty fields in flipcard element
+- fixed render conditions in flipcard element
 
 = 1.8.0 =
 
