@@ -5,7 +5,6 @@
 namespace HerzogDupont;
 
 
-
 use YOOtheme\Config;
 use YOOtheme\Theme\Styler\StylerConfig;
 

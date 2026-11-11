@@ -39,14 +39,50 @@ return [
     'extend' => [
 
         Builder::class => function (Builder $builder, $app) {
-            if (is_null($app->config->get('~theme.hd.elements'))) {
-                $builder->addTypePath(Path::get('./elements/*/element.json'));
+            $knownElements = [
+                'hd-counter',
+                'hd-flipcard',
+                'hd-image-comparison',
+                'hd-lottie',
+                'hd-progress',
+                'hd-slideshow-grid',
+                'hd-timeline',
+                'hd-toggle',
+            ];
+
+            // Legacy elements ship element.json plus a companion element.php (transforms and
+            // updates only) that YOOtheme merges automatically. Migrated elements ship a full
+            // element.php and no element.json, so the JSON file decides which form is registered.
+            $addElementType = function (string $key) use ($builder) {
+                $dir = __DIR__ . '/elements/' . $key;
+
+                if (is_file($dir . '/element.json')) {
+                    $builder->addTypePath(Path::get('./elements/' . $key . '/element.json'));
+                } elseif (is_file($dir . '/element.php')) {
+                    $builder->addTypePath(Path::get('./elements/' . $key . '/element.php'));
+                }
+            };
+
+            $savedElements = $app->config->get('~theme.hd.elements');
+
+            if (is_null($savedElements)) {
+                foreach (glob(__DIR__ . '/elements/*', GLOB_ONLYDIR) ?: [] as $dir) {
+                    $addElementType(basename($dir));
+                }
             } else {
-                foreach ($app->config->get('~theme.hd.elements') as $key => $value) {
-                    if ($value === true) {
-                        $builder->addTypePath(Path::get('./elements/' . $key . '/element.json'));
+                // Config may arrive as an object, so normalise before using array functions.
+                $savedElements = (array) $savedElements;
+
+                // Missing keys (new elements after an upgrade) keep the customizer default: enabled.
+                $elementKeys = array_unique(array_merge($knownElements, array_keys($savedElements)));
+
+                foreach ($elementKeys as $key) {
+                    $enabled = !array_key_exists($key, $savedElements) || $savedElements[$key] === true;
+
+                    if ($enabled) {
+                        $addElementType($key);
                         if ($key === 'hd-timeline' || $key === 'hd-slideshow-grid') {
-                            $builder->addTypePath(Path::get('./elements/' . $key . '_item/element.json'));
+                            $addElementType($key . '_item');
                         }
                     }
                 }

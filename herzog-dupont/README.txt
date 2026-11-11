@@ -2,9 +2,9 @@
 Contributors: forrestkirby
 Tags: YOOtheme, YOOtheme Pro, Page Builder
 Requires at least: 5.4
-Tested up to: 6.9
-Requires PHP: 8.1
-Stable tag: 1.8.2
+Tested up to: 7.1
+Requires PHP: 8.2
+Stable tag: 1.9.4
 License: GNU General Public License version 3
 License URI: https://gnu.org/licenses/gpl-3.0
 
@@ -41,6 +41,13 @@ This plugin adds more elements to the element library of the YOOtheme Pro page b
 10. Lottie Element
 
 == Changelog ==
+
+= 1.9.4 =
+
+- updated element loader to handle both `element.json` and `element.php`
+- declared minimum PHP version in Joomla plugin manifest
+- aligned WordPress plugin version with Joomla plugin version
+- fixed hardened YOOtheme Pro template manifest checks during Joomla installation
 
 = 1.8.2 =
 
