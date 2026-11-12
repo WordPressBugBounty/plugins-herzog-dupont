@@ -10,7 +10,7 @@ if ($props['progress_value_color'] || $props['progress_background_color'])
 $el = $this->el('div', [
 
     'class' => [
-        'hd-progess',
+        'hd-progress',
     ],
 
 ]);

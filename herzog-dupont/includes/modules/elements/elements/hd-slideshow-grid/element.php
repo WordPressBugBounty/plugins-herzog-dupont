@@ -14,7 +14,7 @@ return [
                 foreach ($node->children as $child) {
                     $child->tags = [];
 
-                    foreach (explode(',', $child->props['tags']) as $tag) {
+                    foreach (explode(',', $child->props['tags'] ?? '') as $tag) {
                         // Strip tags as precaution if tags are mapped dynamically
                         $tag = strip_tags($tag);
 

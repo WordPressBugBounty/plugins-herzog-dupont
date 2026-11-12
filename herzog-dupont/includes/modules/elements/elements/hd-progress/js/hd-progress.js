@@ -2,7 +2,7 @@
 
 UIkit.util.ready(() => {
 
-	UIkit.util.$$('.hd-progess progress').forEach(bar => {
+	UIkit.util.$$('.hd-progress progress').forEach(bar => {
 
 		UIkit.scrollspy(bar, { hidden: false });
 

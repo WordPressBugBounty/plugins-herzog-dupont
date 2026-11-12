@@ -22,7 +22,6 @@ return [
                 $node->props['meta'] != '' ||
                 $node->props['content'] != '' ||
                 $node->props['image'] ||
-                $node->props['video'] ||
                 $node->props['icon'];
         },
     ],

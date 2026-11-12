@@ -13,10 +13,15 @@ class Herzogdupont_Activator {
 
         $minimumYOOthemeVersion = '5.0.0-beta.1';
         $themeData = wp_get_theme('yootheme');
-    
+
         if( !$themeData || !version_compare( $themeData->Version, $minimumYOOthemeVersion, '>=' ) ) {
-            deactivate_plugins( plugin_basename( __FILE__ ) );
-            wp_die( __( 'You need YOOtheme Pro ' . $minimumYOOthemeVersion . ' or later to activate this plugin.', 'textdomain' ) );
+            // Dying here is enough: WordPress marks a plugin as active only after its
+            // activation hook has returned.
+            wp_die( esc_html( sprintf(
+                /* translators: %s: minimum YOOtheme Pro version */
+                __( 'You need YOOtheme Pro %s or later to activate this plugin.', 'herzog-dupont' ),
+                $minimumYOOthemeVersion
+            ) ) );
         }
 
     }

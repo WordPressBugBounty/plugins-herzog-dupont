@@ -4,7 +4,7 @@ Tags: YOOtheme, YOOtheme Pro, Page Builder
 Requires at least: 5.4
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.9.4
+Stable tag: 1.9.5
 License: GNU General Public License version 3
 License URI: https://gnu.org/licenses/gpl-3.0
 
@@ -21,6 +21,8 @@ This plugin adds more elements to the element library of the YOOtheme Pro page b
 - Image Comparison Element: Quickly compare two images with a draggable slider showing a before-after effect. Choose from many image and slider icon options.
 - Slideshow Grid Element: Display multiple Slideshows within one grid. Every grid item will contain its own Slideshow including navigations, animations and other features.
 - Lottie Element: Display eye-catching and engaging Lottie animations. Choose from a variety of triggers.
+
+**Security note for the Lottie element:** Lottie animations can contain expressions, which the Lottie player runs as JavaScript in the visitor's browser. Only use animation files from sources you trust. This applies in particular to files loaded from a remote URL and to dynamically mapped sources.
 
 == Installation ==
 1. Make sure the latest version of YOOtheme Pro is installed.
@@ -42,12 +44,20 @@ This plugin adds more elements to the element library of the YOOtheme Pro page b
 
 == Changelog ==
 
+= 1.9.5 =
+
+- renamed misspelled class `hd-progess` to `hd-progress` in progress element
+- fixed preflight required YOOtheme Pro on uninstall (Joomla)
+- fixed activation error message not translated (WordPress)
+- fixed filter for items without tags in slideshow grid element
+- fixed render check in timeline element
+
 = 1.9.4 =
 
 - updated element loader to handle both `element.json` and `element.php`
-- declared minimum PHP version in Joomla plugin manifest
-- aligned WordPress plugin version with Joomla plugin version
-- fixed hardened YOOtheme Pro template manifest checks during Joomla installation
+- declared minimum PHP version in plugin manifest (Joomla)
+- aligned WordPress plugin version with Joomla plugin version (WordPress)
+- fixed hardened YOOtheme Pro template manifest checks during installation (Joomla)
 
 = 1.8.2 =
 
