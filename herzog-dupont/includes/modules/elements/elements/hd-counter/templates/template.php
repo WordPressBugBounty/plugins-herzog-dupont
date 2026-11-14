@@ -2,12 +2,22 @@
 
 /* Herzog Dupont for YOOtheme Pro Copyright (C) 2019-2026 Thomas Weidlich GNU GPL v3 */
 
+// A number field can hold a number, a numeric string or, once it is cleared, an empty
+// value, and PHP 8 throws a TypeError for arithmetic on an empty string. The circle
+// falls back to the defaults of the element instead.
+$props['circle_radius'] = is_numeric($props['circle_radius']) && $props['circle_radius'] > 0 ? (float) $props['circle_radius'] : 90.0;
+$props['circle_stroke_width'] = is_numeric($props['circle_stroke_width']) && $props['circle_stroke_width'] >= 0 ? (float) $props['circle_stroke_width'] : 9.0;
+
 $cx = $cy = $props['circle_radius'] * 1.1;
 $circleWidth = $circleHeight = $cx * 2;
 $viewBox = '0 0 ' . $circleWidth . ' ' . $circleWidth;
 $uniqid = uniqid('counter-');
 $dashOffsetStart = 2 * M_PI * $props['circle_radius'];
 $dashOffsetEnd = 2 * M_PI * $props['circle_radius'] * (1 - intval($props['percentage']) / 100);
+
+// The duration accepts dynamic content and is printed into a style block, so only a
+// number may get there.
+$duration = (float) $props['duration'];
 
 $el = $this->el('div', [
 
@@ -97,7 +107,7 @@ $unitEl = $this->el('span', [
 
     <style>
     #<?php echo $uniqid ?> .counter-value {
-        animation: <?php echo $uniqid ?> <?php echo $props['duration'] ?>ms;
+        animation: <?php echo $uniqid ?> <?php echo $duration ?>ms;
     }
 
     @keyframes <?php echo $uniqid ?> {
@@ -116,8 +126,8 @@ $unitEl = $this->el('span', [
         <div class="uk-inline">
 
             <?php echo $svg($props) ?>
-                <circle class="counter-meter" cx="<?php echo $cx ?>" cy="<?php echo $cy ?>" r="<?php echo $props['circle_radius'] ?>" stroke-width="<?php echo $props['circle_stroke_width'] ?>" fill="none" />
-                <circle class="counter-value" cx="<?php echo $cx ?>" cy="<?php echo $cy ?>" r="<?php echo $props['circle_radius'] ?>" stroke="<?php echo $props['circle_color'] ?>" stroke-width="<?php echo $props['circle_stroke_width'] ?>" fill="none" />
+                <circle class="counter-meter" cx="<?php echo $cx ?>" cy="<?php echo $cy ?>" r="<?php echo (float) $props['circle_radius'] ?>" stroke-width="<?php echo (float) $props['circle_stroke_width'] ?>" fill="none" />
+                <circle class="counter-value" cx="<?php echo $cx ?>" cy="<?php echo $cy ?>" r="<?php echo (float) $props['circle_radius'] ?>" stroke="<?php echo $this->e($props['circle_color']) ?>" stroke-width="<?php echo (float) $props['circle_stroke_width'] ?>" fill="none" />
             </svg>
 
             <div class="uk-position-center uk-overlay">

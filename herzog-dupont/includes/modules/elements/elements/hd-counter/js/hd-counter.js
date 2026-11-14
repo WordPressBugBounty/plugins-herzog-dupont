@@ -1,24 +1,57 @@
 /* Herzog Dupont for YOOtheme Pro Copyright (C) 2019-2026 Thomas Weidlich GNU GPL v3 */
 
-function countUp(el, start, end, duration, separatorLocale) {
-	let range = end - start;
-	let stepTime = Math.abs(Math.floor(duration / range));
+/**
+ * Counts from start to the number and prints each value into the element.
+ *
+ * @param {HTMLElement} el
+ * @param {number} start
+ * @param {string|undefined} number The number as it was entered. Its decimals are kept.
+ * @param {number} duration In milliseconds.
+ * @param {string|undefined} separatorLocale
+ */
+function countUp(el, start, number, duration, separatorLocale) {
+	const end = (number ?? '').trim() === '' ? NaN : Number(number);
 
-	let startTime = new Date().getTime();
-	let endTime = startTime + duration;
-	let timer;
-
-	function count() {
-		let now = new Date().getTime();
-		let remaining = Math.max((endTime - now) / duration, 0);
-		let value = Math.round(end - (remaining * range));
-		el.innerHTML = (separatorLocale === undefined) ? value : value.toLocaleString(separatorLocale, { useGrouping: true });
-		if (value == end) {
-			clearInterval(timer);
-		}
+	// Without a number to count to, the text printed by the server stays.
+	if (!Number.isFinite(end)) {
+		return;
 	}
 
-	timer = setInterval(count, stepTime);
+	// Show as many decimals as the number has, so that 12.5 ends at 12.5 and not at 13.
+	const decimals = Math.min((number.split('.')[1] || '').trim().length, 20);
+	const range = end - start;
+	let timer;
+
+	function show(value) {
+		// Adding 0 turns -0 into 0.
+		const rounded = Number(value.toFixed(decimals)) + 0;
+
+		el.textContent = (separatorLocale === undefined)
+			? rounded.toFixed(decimals)
+			: rounded.toLocaleString(separatorLocale, { useGrouping: true, minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+	}
+
+	// Nothing to animate.
+	if (range === 0 || !(duration > 0)) {
+		show(end);
+		return;
+	}
+
+	const endTime = Date.now() + duration;
+
+	function count() {
+		const remaining = Math.max((endTime - Date.now()) / duration, 0);
+
+		// The duration is over. The value shown below is then the end value.
+		if (remaining === 0) {
+			clearInterval(timer);
+		}
+
+		show(end - (remaining * range));
+	}
+
+	// One tick for each value that can be shown.
+	timer = setInterval(count, Math.floor(duration / (Math.abs(range) * 10 ** decimals)));
 	count();
 }
 
@@ -41,7 +74,7 @@ UIkit.util.ready(_ => {
 				}
 
 				if (numberEl) {
-					countUp(numberEl, 0, el.dataset.number, parseInt(el.dataset.duration), el.dataset.separatorLocale);
+					countUp(numberEl, 0, el.dataset.number, Number(el.dataset.duration), el.dataset.separatorLocale);
 				}
 
 				el.setAttribute('data-animated', true);

@@ -4,7 +4,7 @@ Tags: YOOtheme, YOOtheme Pro, Page Builder
 Requires at least: 5.4
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.9.5
+Stable tag: 1.9.6
 License: GNU General Public License version 3
 License URI: https://gnu.org/licenses/gpl-3.0
 
@@ -43,6 +43,17 @@ This plugin adds more elements to the element library of the YOOtheme Pro page b
 10. Lottie Element
 
 == Changelog ==
+
+= 1.9.6 =
+
+- fixed error if circle radius is empty in counter element
+- fixed animation not stopping for decimal numbers in counter element
+- fixed color and margin top of back icon not applied in flipcard element
+- fixed hover transition of back image applied to front image in flipcard element
+- fixed image labels in content template of image comparison element
+- fixed animation not stopping at stop value in progress element
+- fixed short PHP open tags in progress element
+- fixed numeric and color settings printed without sanitizing in counter, image comparison and progress elements
 
 = 1.9.5 =
 

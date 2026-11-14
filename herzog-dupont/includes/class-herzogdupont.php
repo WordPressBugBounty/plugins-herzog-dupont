@@ -27,7 +27,7 @@ class Herzogdupont {
         if ( defined( 'HERZOGDUPONT_VERSION' ) ) {
             $this->version = HERZOGDUPONT_VERSION;
         } else {
-            $this->version = '1.9.5';
+            $this->version = '1.9.6';
         }
         $this->plugin_name = 'herzogdupont';
 

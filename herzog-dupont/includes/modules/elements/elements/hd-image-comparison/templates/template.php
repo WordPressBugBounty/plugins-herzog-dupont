@@ -4,6 +4,9 @@
 
 $uniqid = uniqid('hd-');
 
+// The icon width is printed into a style block, so only a number may get there.
+$icon_width = is_numeric($props['icon_width']) ? (float) $props['icon_width'] : null;
+
 $el = $this->el('div', [
 
     'class' => [
@@ -111,16 +114,18 @@ $decoration = $this->el('div', [
 
 <?php echo $el($props, $attrs) ?>
 
+    <?php if ($icon_width !== null) : ?>
     <style>
     #<?php echo $uniqid ?> .hd-image-comparison-range::-webkit-slider-thumb {
-        height: <?php echo $props['icon_width'] ?>px;
-        width: <?php echo $props['icon_width'] ?>px;
+        height: <?php echo $icon_width ?>px;
+        width: <?php echo $icon_width ?>px;
     }
     #<?php echo $uniqid ?> .hd-image-comparison-range::-moz-range-thumb {
-        height: <?php echo $props['icon_width'] ?>px;
-        width: <?php echo $props['icon_width'] ?>px;
+        height: <?php echo $icon_width ?>px;
+        width: <?php echo $icon_width ?>px;
     }
     </style>
+    <?php endif ?>
 
     <?php if ($props['image_before'] && $props['image_after']) : ?>
     <div id ="<?php echo $uniqid ?>" class="hd-image-comparison">

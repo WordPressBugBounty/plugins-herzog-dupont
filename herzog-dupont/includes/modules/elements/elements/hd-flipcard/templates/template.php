@@ -115,6 +115,7 @@ if ($props['panel_style'] && $props['has_panel_image_no_padding']) {
 // Resets
 if ($props['icon_back'] && !$props['image_back']) { $props['panel_back_image_no_padding'] = ''; }
 if ($props['panel_back_style'] || !$props['image_back']) { $props['image_back_box_decoration'] = ''; }
+if (!$props['image_back']) { $props['image_back_transition'] = ''; }
 if ($props['panel_back_link']) {
     $props['title_back_link'] = '';
     $props['image_back_link'] = '';
@@ -139,7 +140,7 @@ if ($props['image_back_transition']) {
             'uk-margin[-{image_back_margin}]-top {@!image_back_margin: remove} {@!image_back_box_decoration}' => $props['image_back_align'] == 'between' || ($props['image_back_align'] == 'bottom' && !($props['panel_back_style'] && $props['panel_back_image_no_padding'])),
         ],
     ]);
-    $props['image'] = $transition_toggle($props, $props['image']);
+    $props['image_back'] = $transition_toggle($props, $props['image_back']);
 
 }
 

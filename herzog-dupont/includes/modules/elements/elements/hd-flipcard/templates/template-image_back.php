@@ -47,8 +47,8 @@ if ($props['image_back']) {
 
         'class' => [
             'el-image-back',
-            'uk-text-{icon_color}',
-            'uk-margin[-{image_margin}]-top {@!image_margin: remove}' => $props['image_align'] == 'between' || ($props['image_align'] == 'bottom' && !($props['panel_style'] && $props['panel_back_image_no_padding'])),
+            'uk-text-{icon_back_color}',
+            'uk-margin[-{image_back_margin}]-top {@!image_back_margin: remove}' => $props['image_back_align'] == 'between' || ($props['image_back_align'] == 'bottom' && !($props['panel_back_style'] && $props['panel_back_image_no_padding'])),
         ],
 
         'uk-icon' => [

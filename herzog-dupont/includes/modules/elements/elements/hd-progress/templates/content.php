@@ -5,4 +5,4 @@
 if ($props['content']) : ?>
 <div><?php echo $props['content'] ?></div>
 <?php endif ?>
-<progress value="<?php echo $props['stop'] ?>" max="<?php echo $props['max'] ?>"><?php echo $props['stop'] ?>/<?php echo $props['max'] ?></progress>
+<progress value="<?php echo (float) $props['stop'] ?>" max="<?php echo (float) $props['max'] ?>"><?php echo (float) $props['stop'] ?>/<?php echo (float) $props['max'] ?></progress>
